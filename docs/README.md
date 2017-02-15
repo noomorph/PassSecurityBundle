@@ -7,7 +7,7 @@ Bundle only checks the password in the list, and tells you under what number it 
 
 I recommend not to use any password from those that have been found in the list.
 
-#How to use
+# How to use
 
 In below example, we imagine, that you want check passwords for user before they submit form
 
@@ -36,15 +36,16 @@ You also can use console command
 
 Where `123456` - your custom password
 
-#Documentation
-Default configuration:
+# Documentation
+
+## Default configuration:
 
     pass_security:
             type: "file"
 
 Value "type" can be `file` (default), `base`, `custom`
 
-#Type "file"
+### Type "file"
 
 In this case, the password will be read from the file. Default file have 100 000 passwords, and you can use you own file:
 
@@ -67,7 +68,7 @@ Example (select file with 1 000 000 passwords):
             type: "file"
             file: Pass1M
             
-#Type "base"
+### Type "base"
 
 In this case, the passwords will be read from the database. Default configuration looks like this:
 
@@ -82,7 +83,8 @@ You can configure the fololowing variables:
             repository: AcmeBundle:MyCustomEntity
 
 Requirements:
-* `MyCustomEntity `  must implement the interface `InterfacePassSecurityEntity`
+
+* `MyCustomEntity` must implement the interface `InterfacePassSecurityEntity`
 
 You can use you own passwords data in database, or you can transfer all the data from file with following console command:
 
@@ -90,13 +92,16 @@ You can use you own passwords data in database, or you can transfer all the data
 
 This command will write all passwords wrom "file" (by default Pass100K) in table, who define in entity "class" (by default 'pass_security_base')
 
-#Type "custom"
+### Type "custom"
 You can also create your own service, for check passwords.
 
-    pass_security:
-            type: "custom"
-            custom_service: "acme_bundle.my_service"
+```yaml
+pass_security:
+        type: "custom"
+        custom_service: "acme_bundle.my_service"
+```
 
 Requirements:
+
 * Service must implement the interface `InterfaceReader`;
 * The service must be available for download from container;
