@@ -11,7 +11,7 @@ I recommend not to use any password from those that have been found in the list.
 
 In below example, we imagine, that you want check passwords for user before they submit form
 
-```
+```php
     /**
      * @Route("/ajax_password_check")
      * @param Request $request
